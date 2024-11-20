@@ -23,7 +23,7 @@ form.addEventListener('submit', (e) => {
       storeUserData(email_input.value, password_input.value);
       alert('Sign up successful!');
       // Redirect to index.html (dashboard) after successful signup
-      window.location.href = "index.html";
+      window.location.href = "dash.html";
       return; // Stop further code execution after redirection
     }
   } else {
