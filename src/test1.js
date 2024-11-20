@@ -35,7 +35,7 @@ form.addEventListener('submit', (e) => {
       if (validateLogin(email_input.value, password_input.value)) {
         alert('Login successful!');
         // Redirect to index.html (dashboard) after successful login
-        window.location.href = "index.html";
+        window.location.href = "dash.html";
         return; // Stop further code execution after redirection
       } else {
         errors.push('Invalid email or password');
