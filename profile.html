@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOMeN4os4N1N4+Wp3pryP4Ur93dJt6fbwXDXz0p5" crossorigin="anonymous">
+    <style>.from-blue-500 {
+      --tw-gradient-from: #00408a;
+      --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(59, 130, 246, 0));
+  }</style>
+    <title>Mandatory Form</title>
+</head>
+<body>
+    <div class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50 py-8 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-5xl mx-auto bg-white rounded-2xl shadow-lg overflow-hidden">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="md:col-span-1 bg-gradient-to-b from-blue-500 to-indigo-600 p-8">
+              <div class="flex flex-col items-center space-y-6">
+                <div class="relative">
+                  <img
+                    id="profileImage"
+                    src="https://st4.depositphotos.com/11574170/25191/v/450/depositphotos_251916955-stock-illustration-user-glyph-color-icon.jpg"
+                    width="200" height="200"
+                    alt="Profile preview"
+                    class="w-[160px] h-[160px] rounded-full object-cover border-4 border-white shadow-xl"
+                  />
+                  <label class="absolute bottom-2 right-2 bg-white rounded-full p-3 cursor-pointer hover:bg-gray-100 transition-colors shadow-lg">
+                    <input
+                      type="file"
+                      class="hidden"
+                      accept="image/*"
+                      onchange="handleImageChange(event)"
+                      name="profile_photo"
+                    />
+                    <i class="fas fa-camera text-blue-600"></i>
+                  </label>
+                </div>
+                <h2 class="text-2xl font-bold text-white font-montserrat mt-4">
+                  Profile Settings
+                </h2>
+                <p class="text-blue-100 text-center">
+                  Update your personal information and preferences
+                </p>
+              </div>
+            </div>
+  
+            <div class="md:col-span-2 p-8">
+              <form id="profileForm" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="md:col-span-2">
+                  <h3 class="text-xl font-semibold text-gray-800 font-montserrat mb-6">
+                    Personal Information
+                  </h3>
+                </div>
+  
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 font-montserrat">First Name</label>
+                  <input type="text" name="firstName" required class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 bg-gray-50 p-3 " />
+                </div>
+  
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 font-montserrat">Last Name</label>
+                  <input type="text" name="lastName" required class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 bg-gray-50 p-3" />
+                </div>
+  
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 font-montserrat">Email Address</label>
+                  <input type="email" name="email" required class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 bg-gray-50 p-3" />
+                </div>
+  
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 font-montserrat">Contact Number</label>
+                  <input type="tel" name="contactNo" required pattern="[0-9]{10}" class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 bg-gray-50 p-3" />
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 font-montserrat">Alternate Contact Number</label>
+                    <input type="tel" name="alternateContactNo" required pattern="[0-9]{10}" class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 bg-gray-50 p-3" />
+                </div>
+  
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 font-montserrat">Date of Birth</label>
+                  <input type="date" name="birthdate" required class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 bg-gray-50 p-3" />
+                </div>
+  
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 font-montserrat">Gender</label>
+                  <select name="gender" required class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 bg-gray-50 p-3">
+                    <option>Select gender</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+  
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 font-montserrat">Age</label>
+                  <input type="text" name="age" required class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 bg-gray-50 p-3" />
+                </div>
+                
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 font-montserrat">Blood Group</label>
+                  <select name="bloodGroup" required class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 bg-gray-50 p-3">
+                    <option>Select Blood Group</option>
+                    <option>O+</option>
+                    <option>O-</option>
+                    <option>A+</option>
+                    <option>A-</option>
+                    <option>B+</option>
+                    <option>B-</option>
+                    <option>AB+</option>
+                    <option>AB-</option>
+                  </select>
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 font-montserrat">Height (in cm)</label>
+                    <input type="text" name="height" required class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 bg-gray-50 p-3" />
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 font-montserrat">Weight (in kg)</label>
+                    <input type="text" name="weight" required class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 bg-gray-50 p-3" />
+                </div>
+  
+                <div class="md:col-span-2">
+                  <label class="block text-sm font-medium text-gray-700 font-montserrat">Address 1 (Permanent)</label>
+                  <input type="text" name="address" required class="mt-1 block w-full rounded-lg border-gray- 300 shadow-sm focus:border-blue-500 focus:ring-blue-500 bg-gray-50 p-3" />
+                </div>
+                
+                <div class="md:col-span-2">
+                    <label class="block text-sm font-medium text-gray-700 font-montserrat">Address 2 (Alternate Address)</label>
+                    <input type="text" name="alternateAddress" required class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 bg-gray-50 p-3" />
+                </div>
+  
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 font-montserrat">Country</label>
+                  <select name="country" required class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 bg-gray-50 p-3">
+                    <option value="">--Choose a Country--</option>
+                    <option value="USA">United States</option>
+                    <option value="CAN">Canada</option>
+                    <option value="GBR">United Kingdom</option>
+                    <option value="AUS">Australia</option>
+                    <option value="IND"> India</option>
+                    <option value="ESP">Spain</option>
+                    <option value="PAK">Pakistan</option>
+                    <option value="BGD">Bangladesh</option>
+                    <option value="CHN">China</option>
+                    <option value="IRN">Iran</option>
+                    <option value="IRQ">Iraq</option>
+                    <option value="AFG">Afghanistan</option>
+                    <option value="FRA">France</option>
+                    <option value="ARM">Armenia</option>
+                    <option value="AUT">Austria</option>
+                    <option value="SAU">Saudi Arabia</option>
+                    <option value="VNM">Vietnam</option>
+                    <option value="MDV">Maldives</option>
+                    <option value="EGY">Egypt</option>
+                    <option value="LKA">Sri Lanka</option>
+                    <option value="HKG">Hong Kong</option>
+                    <option value="ITA">Italy</option>
+                    <option value="HUN">Hungary</option>
+                    <option value="SGP">Singapore</option>
+                    <option value="DZA">Algeria</option>
+                  </select>
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 font-montserrat">State</label>
+                    <select name="state" required class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 bg-gray-50 p-3">
+                        <option value="">--Choose a state--</option>
+                        <option value="Andhra Pradesh">Andhra Pradesh</option>
+                        <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                        <option value="Assam">Assam</option>
+                        <option value="Bihar">Bihar</option>
+                        <option value="Chhatisgarh">Chhatisgarh</option>
+                        <option value="Goa">Goa</option>
+                        <option value="Gujarat">Gujarat</option>
+                        <option value="Haryana">Haryana</option>
+                        <option value="Himachal Pradesh">Himachal Pradesh</option>
+                        <option value="Jharkhand">Jharkhand</option>
+                        <option value="Karnataka">Karnataka</option>
+                        <option value="Kerala">Kerala</option>
+                        <option value="Madhya Pradesh">Madhya Pradesh</option>
+                        <option value="Maharashtra">Maharashtra</option>
+                        <option value="Manipur">Manipur</option>
+                        <option value="Meghalaya">Meghalaya</option>
+                        <option value="Mizoram">Mizoram</option>
+                        <option value="Nagaland">Nagaland</option>
+                        <option value="Odisha">Odisha</option>
+                        <option value="Punjab">Punjab</option>
+                        <option value="Rajasthan">Rajasthan</option>
+                        <option value="Sikkim">Sikkim</option>
+                        <option value="Tamil Nadu">Tamil Nadu</option>
+                        <option value="Telangana">Telangana</option>
+                        <option value="Tripura">Tripura</option>
+                        <option value="Uttarakhand">Uttarakhand</option>
+                        <option value="Uttar Pradesh">Uttar Pradesh</option>
+                        <option value="West Bengal">West Bengal</option>
+ </select>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 font-montserrat">City</label>
+                        <input type="text" name="city" required class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 bg-gray-50 p-3" />
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 font-montserrat">Previous Illness (if any)</label>
+                        <input type="text" name="previousIllness" required class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 bg-gray-50 p-3" />
+                    </div>
+  
+                    <div class="md:col-span-2">
+                      <label class="block text-sm font-medium text-gray-700 font-montserrat">About me</label>
+                      <textarea name="aboutMe" required rows="3" class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 bg-gray-50 p-3"></textarea>
+                    </div>
+  
+                    <div class="md:col-span-2">
+                      <button type="submit" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 font-montserrat">
+                        Save Changes
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <script>
+              document.addEventListener("DOMContentLoaded", function () {
+                const form = document.getElementById("profileForm");
+                const formData = {
+                  firstName: form.querySelector("input[name='firstName']"),
+                  lastName: form.querySelector("input[name='lastName']"),
+                  email: form.querySelector("input[name='email']"),
+                  contactNo: form.querySelector("input[name='contactNo']"),
+                  alternateContactNo: form.querySelector("input[name='alternateContactNo']"),
+                  birthdate: form.querySelector("input[name='birthdate']"),
+                  gender: form.querySelector("select[name='gender']"),
+                  age: form.querySelector("input[name='age']"),
+                  bloodGroup: form.querySelector("select[name='bloodGroup']"),
+                  height: form.querySelector("input[name='height']"),
+                  weight: form.querySelector("input[name='weight']"),
+                  address: form.querySelector("input[name='address']"),
+                  alternateAddress: form.querySelector("input[name='alternateAddress']"),
+                  country: form.querySelector("select[name='country']"),
+                  state: form.querySelector("select[name='state']"),
+                  city: form.querySelector("input[name='city']"),
+                  previousIllness: form.querySelector("input[name='previousIllness']"),
+                  aboutMe: form.querySelector("textarea[name='aboutMe']")
+                };
+        
+                // Load saved values from local storage
+                for (const key in formData) {
+                  const savedValue = localStorage.getItem(key);
+                  if (savedValue) {
+                    formData[key].value = savedValue;
+                  }
+                }
+
+                // Load saved image from local storage
+                const savedImage = localStorage.getItem("profileImage");
+                if (savedImage) {
+                  const img = document.getElementById("profileImage");
+                  img.src = savedImage;
+                }
+
+                form.addEventListener("submit", function (event) {
+                  event.preventDefault(); 
+                  for (const key in formData) {
+                    localStorage.setItem(key, formData[key].value);
+                  }
+                  alert("Your changes have been saved!");
+                });
+              });
+
+              function handleImageChange(event) {
+                const file = event.target.files[0];
+                if (file) {
+                  const reader = new FileReader();
+                  reader.onload = function (e) {
+                    const img = document.getElementById("profileImage");
+                    img.src = e.target.result;
+                    localStorage.setItem("profileImage", e.target.result); // Save image to local storage
+                  };
+                  reader.readAsDataURL(file);
+                }
+              }
+            </script>
+        </body>
+    </html>

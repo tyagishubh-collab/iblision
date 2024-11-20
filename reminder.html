@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Reminder</title>
+    
+    <!-- Google Fonts for stylish typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- CSS Styles -->
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f2f7f6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #0a74da;
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        label {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        input, button {
+            font-size: 16px;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            margin: 10px 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        input {
+            background-color: #f7f7f7;
+            transition: background-color 0.3s ease;
+        }
+
+        input:focus {
+            background-color: #e8f4ff;
+            border-color: #0a74da;
+            outline: none;
+        }
+
+        button {
+            background-color: #0a74da;
+            color: white;
+            cursor: pointer;
+            border: none;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #074e9f;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #ddd;
+            font-size: 16px;
+        }
+
+        th {
+            background-color: #0a74da;
+            color: white;
+            font-weight: 600;
+        }
+
+        td {
+            background-color: #f7f7f7;
+        }
+
+        .delete-btn {
+            background-color: #e74c3c;
+            color: white;
+            padding: 8px 16px;
+            font-size: 14px;
+            border-radius: 4px;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .delete-btn:hover {
+            background-color: #c0392b;
+        }
+
+        .tts-btn {
+            background-color: #2ecc71;
+            color: white;
+            font-weight: 600;
+            padding: 12px;
+            border-radius: 8px;
+            width: 100%;
+            border: none;
+            margin-top: 15px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .tts-btn:hover {
+            background-color: #27ae60;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Reminder Form Container -->
+    <div class="container">
+        <h2>Schedule Your Reminders</h2>
+        <label for="title">Reminder Title</label>
+        <input type="text" id="title" placeholder="Enter Reminder Title (e.g. Medication)" />
+
+        <label for="description">Description</label>
+        <input type="text" id="description" placeholder="Enter Reminder Description" />
+
+        <label for="date">Date</label>
+        <input type="date" id="date" />
+
+        <label for="time">Time</label>
+        <input type="time" id="time" />
+
+        <button onclick="scheduleReminder();">Set Reminder</button>
+        <button class="tts-btn" onclick="textToSpeech();">Play Voice Reminder</button>
+
+        <!-- Reminder Table -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Date & Time</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="reminderTableBody"></tbody>
+        </table>
+    </div>
+
+    <!-- Notification Sound -->
+    <audio src="notification-sound.mp3" id="notification"></audio>
+
+    <!-- JavaScript -->
+    <script>
+        if ("Notification" in window) {
+            if (Notification.permission !== "granted") {
+                Notification.requestPermission().then(permission => {
+                    if (permission === "granted") {
+                        console.log("Notification permission granted.");
+                    }
+                });
+            }
+        }
+
+        let timeoutIds = [];
+
+        function scheduleReminder() {
+            const title = document.getElementById("title").value;
+            const description = document.getElementById("description").value;
+            const date = document.getElementById("date").value;
+            const time = document.getElementById("time").value;
+
+            const dateTimeString = date + " " + time;
+            const scheduledTime = new Date(dateTimeString);
+            const currentTime = new Date();
+            const timeDifference = scheduledTime - currentTime;
+
+            if (timeDifference > 0) {
+                addReminder(title, description, dateTimeString);
+
+                const timeoutId = setTimeout(function () {
+                    // Play notification sound
+                    document.getElementById("notification").play();
+
+                    // Show notification
+                    if (Notification.permission === "granted") {
+                        new Notification(title, {
+                            body: description,
+                            requireInteraction: true,
+                        });
+                    }
+
+                    // Text-to-Speech functionality (speak continuously for 1 minute)
+                    if ('speechSynthesis' in window) {
+                        window.speechSynthesis.cancel(); // Clear any queued speech
+
+                        const speech = new SpeechSynthesisUtterance(description);
+                        speech.lang = 'en-US';
+                        speech.pitch = 1;
+                        speech.rate = 1;
+
+                        // Function to speak continuously
+                        const speakInterval = setInterval(() => {
+                            window.speechSynthesis.speak(speech);
+                        }, 5000); // Repeat every 5 seconds
+
+                        // Stop speaking after 30 seconds (30000ms)
+                        setTimeout(() => {
+                            clearInterval(speakInterval);
+                        }, 30000); // Stop after 30 seconds
+
+                        // Start the first speech
+                        window.speechSynthesis.speak(speech);
+                    } else {
+                        alert("Sorry, your browser doesn't support text-to-speech.");
+                    }
+
+                }, timeDifference);
+
+                timeoutIds.push(timeoutId);
+            } else {
+                alert("The scheduled time is in the past!");
+            }
+        }
+
+        function addReminder(title, description, dateTimeString) {
+            const tableBody = document.getElementById("reminderTableBody");
+            const row = tableBody.insertRow();
+
+            const titleCell = row.insertCell(0);
+            const descriptionCell = row.insertCell(1);
+            const dateTimeCell = row.insertCell(2);
+            const actionCell = row.insertCell(3);
+
+            titleCell.textContent = title;
+            descriptionCell.textContent = description;
+            dateTimeCell.textContent = dateTimeString;
+            actionCell.innerHTML = '<button class="delete-btn" onclick="deleteReminder(this);">Delete</button>';
+        }
+
+        function deleteReminder(button) {
+            const row = button.closest("tr");
+            const index = row.rowIndex - 1; // account for header row
+            clearTimeout(timeoutIds[index]);
+            timeoutIds.splice(index, 1);
+            row.remove();
+        }
+
+        function textToSpeech() {
+            const text = document.getElementById("description").value;
+
+            if ('speechSynthesis' in window) {
+                const speech = new SpeechSynthesisUtterance(text);
+                speech.lang = 'en-US';
+                speech.pitch = 1;
+                speech.rate = 1;
+                window.speechSynthesis.speak(speech);
+            } else {
+                alert("Sorry, your browser doesn't support text-to-speech.");
+            }
+        }
+    </script>
+
+</body>
+</html>

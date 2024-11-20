@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>MediBot</title>
+    <link rel="stylesheet" href="bot.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Google Fonts Link For Icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <!-- Load the Google API client (if necessary for other functionality) -->
+    <script src="https://apis.google.com/js/api.js"></script>
+
+    <!-- Your custom script file -->
+    <script src="bot.js" defer></script>
+  </head>
+  <body>
+    <!-- Chat container -->
+    <div class="chat-container">
+      
+      <!-- Chatbox: Where messages will appear -->
+      <div class="chatbox">
+        <!-- Welcome message will be displayed here initially -->
+        <div class="default-text">
+          <h1>Welcome to MediBot!</h1>
+          <p>Start a conversation by typing your message below.</p>
+        </div>
+      </div>
+
+      <!-- Typing container: Where the user can input their message -->
+      <div class="typing-container">
+        <div class="typing-content">
+          <div class="typing-textarea">
+            <textarea class="chat-input" spellcheck="false" placeholder="Enter a prompt here" required></textarea>
+            <span class="send-chat-btn material-symbols-rounded">send</span>
+          </div>
+          <div class="typing-controls">
+            <span class="theme-btn material-symbols-rounded">light_mode</span>
+            <span class="delete-btn material-symbols-rounded">delete</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chatbot toggle button -->
+    <div class="chatbot-toggler">
+      <span class="material-symbols-rounded">chat</span>
+    </div>
+
+    <!-- Close button for the chatbot -->
+    <div class="close-btn">
+      <span class="material-symbols-rounded">close</span>
+    </div>
+  </body>
+</html>

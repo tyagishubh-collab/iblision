@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Booking</title>
+    <link rel="stylesheet" href="pages.css">
+    <style>
+        body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("doc-img9.jpg"); /* Replace with your image path */
+    background-size: cover;
+    background-position: center;
+    filter: blur(8px); /* Adjust the blur level */
+    z-index: -1;
+    opacity: 0.8; /* Adjust the transparency as needed */
+}
+</style>
+</head>
+<body>
+    <!-- Page Header -->
+    <h1>Book an Appointment</h1>
+    <h2>For Endocrinologist</h2>
+
+    <!-- Form Container -->
+    <form id="bookingForm">
+        <label for="doctor">Doctor:</label>
+        <select id="doctor" name="doctor" required>
+            <option value="">Select Doctor</option>
+            <option value="Dr. Vikram Mehta">Dr. Vikram Mehta</option>
+            <option value="Dr. Naini Tondon">Dr. Naini Tondon</option>
+            <option value="Dr. Salil Kumar">Dr. Salil Kumar</option>
+        </select>
+
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date" required>
+
+        <label for="time">Time:</label>
+        <input type="time" id="time" name="time" required>
+
+        <button type="submit">Book Appointment</button>
+    </form>
+
+    <!-- Confirmation Modal and Overlay -->
+    <div id="confirmationModal" class="confirmation">
+        <p id="confirmationMessage"></p>
+        <button onclick="closeModal()">Close</button>
+    </div>
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Spinner for Loading State -->
+    <div class="spinner" id="spinner" style="display: none;"></div>
+
+    <script src="pages.js"></script>
+</body>
+</html>

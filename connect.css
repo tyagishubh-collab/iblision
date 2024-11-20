@@ -1,0 +1,103 @@
+header{
+    display:flex;
+    height:42px;
+    background-color: #ffffff;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 3px solid #eeeded;
+}
+.home{
+    margin-bottom: 2px;
+    margin-left: 10px;margin-right: 4px;
+}
+.dash{
+    color: #9c9c9f;
+    font-size: 16px;
+    font-weight: 200px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin-left: 1px;
+    margin-bottom: 2px;
+
+}
+.connect{
+    color: #505053;
+    font-size: 16px;
+    font-weight: 200px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin-right: 85%;
+    margin-bottom: 2px;
+}
+.material-symbols-outlined {
+    color: #67676b;
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+.search-icon{
+    background-color: #f2f2f6;
+    height: 28px;
+    padding: 10px;
+    color:#2a2c32;
+    border-radius: 20px 0 0 20px;
+}
+#search-box{
+    background-color: #f2f2f6;
+    font-size: 17px;
+    color: #242427;
+    height: 46px;
+    width: 450px;
+    border-radius: 0 20px 20px 0;
+    border:0;
+}
+#search-bar{
+    display: flex;
+    width: 700px;
+    height: 70px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    margin-left: 30%;
+    align-items: center;
+}
+.cat-heading{
+    color: #3b3c3e;
+    font-size: 30px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: 600px;
+    margin-left: 80px;
+    margin-top: 20px;
+}
+.categories{
+    display: flex; 
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 10px 0 15px 0;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    margin-left: 60px;
+    margin-right: 60px;
+}
+.imgs{
+    width:150px;
+    height: 130px;
+}
+.box{
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 0 10px rgba(55, 54, 54, 0.2);
+    height:200px;
+    width:190px;
+}
+
+.names{
+    text-decoration: none;
+    font-size: 17px;
+    color: #454546;
+}
