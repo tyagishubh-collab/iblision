@@ -5,10 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOMeN4os4N1N4+Wp3pryP4Ur93dJt6fbwXDXz0p5" crossorigin="anonymous">
-    <style>.from-blue-500 {
-      --tw-gradient-from: #00408a;
-      --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(59, 130, 246, 0));
-  }</style>
     <title>Mandatory Form</title>
 </head>
 <body>
@@ -114,7 +110,7 @@
                 </div>
                 
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 font-montserrat">Height (in cm)</label>
+                    <label class="block text-sm font-medium text-gray-700 font-montserrat">Height (in m)</label>
                     <input type="text" name="height" required class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 bg-gray-50 p-3" />
                 </div>
                 
@@ -219,6 +215,10 @@
                       <button type="submit" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 font-montserrat">
                         Save Changes
                       </button>
+
+                      <div onclick="clearInputs()" style="margin-top: 10px; cursor: pointer;" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 font-montserrat">
+                        Clear Inputs
+                      </div>
                     </div>
                   </form>
                 </div>
@@ -283,6 +283,11 @@
                   };
                   reader.readAsDataURL(file);
                 }
+              }
+
+              function clearInputs(){
+                localStorage.clear();
+                location.reload();
               }
             </script>
         </body>
